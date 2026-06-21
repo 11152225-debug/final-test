@@ -169,6 +169,9 @@ button:hover{opacity: 0.5;}
     }
 
     .hero-image{
+        max-width: 100%;
+        height: auto;
+        display: block;
         margin-top: 40px;
     }
 }
@@ -265,49 +268,4 @@ body.theme-matrix .nav-link a{
     color: #000000;
 }
 
-/* 📱 專門優化手機板螢幕 (小於 600px) 的排版 */
-@media (max-width: 600px) {
-    /* 1. 讓最外層容器在手機上不要留太多邊距，爭取空間 */
-    .todo-container {
-        padding: 10px;
-        margin: 20px auto;
-        max-width: 100%;
-    }
-
-    /* 2. 重點：讓輸入框跟按鈕在手機上「上下堆疊」，不要硬擠在同一行 */
-    .todo-input-group {
-        flex-direction: column; 
-        gap: 10px;
-        width: 100%;
-    }
-
-    /* 3. 解除輸入框在手機上的寬度限制，讓它們百分之百撐滿螢幕 */
-    .todo-input-group input,
-    #todo-input,
-    #todo-time {
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: 0 !important; /* 解除之前的 min-width 限制，防止衝出螢幕 */
-        box-sizing: border-box;  /* 確保 padding 不會把框框撐爆 */
-    }
-
-    /* 4. 讓按鈕在手機上也撐滿，比較好點擊 */
-    .todo-input-group button {
-        width: 100%;
-        padding: 12px;
-    }
-
-    /* 5. 讓新增出來的代辦事項文字，在手機上也可以自動換行，不會擠在一起 */
-    .todo-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
-    
-    .todo-item span {
-        width: 100%;
-        word-break: break-all; /* 防止超長文字衝出框框 */
-    }
-}
-       
 
