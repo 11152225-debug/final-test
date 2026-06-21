@@ -40,18 +40,13 @@ SendBtn.addEventListener('click', function(){
 
     setTimeout(function() {
 
-        // ✨ 核心連動功能：判斷是否要新增待辦事項
         if (userMessage.includes("新增") || userMessage.includes("提醒")) {
             
-            // 1. 萃取使用者到底想做什麼（過濾掉雜詞）
-            // 例如：「幫我新增繳交網頁作業」-> 變成「繳交網頁作業」
             let taskText = userMessage.replace('幫我', '').replace('新增', '').replace('提醒', '').trim();
 
             if (taskText !== "") {
-                // 2. 自動將文字填入下方的待辦事項輸入框
                 document.getElementById('todo-input').value = taskText;
                 
-                // 3. 【黃金連動】直接觸發你在 todo.js 裡面寫好的 addTodo() 函式
                 if (typeof addTodo === "function") {
                     addTodo();
                     aiResponse.innerText = `AI助理: 沒問題！已幫您在下方新增事項：「${taskText}」`;
@@ -65,7 +60,7 @@ SendBtn.addEventListener('click', function(){
 
         else if (userMessage.includes("淺色") || userMessage.includes("白天")) {
             document.body.className = "theme-light";
-            aiResponse.innerText='AI助理: 您好呀~今天過得還好嗎?';
+            aiResponse.innerText="AI助理: 已為您調整至【預設淺色模式】。";
         } 
 
         else if (userMessage.includes("綠色") || userMessage.includes("駭客")) {
@@ -76,6 +71,11 @@ SendBtn.addEventListener('click', function(){
         else if (userMessage.includes("深色") || userMessage.includes("晚上")) {
             document.body.className = "";
             aiResponse.innerText="AI助理: 已為您恢復至【預設深色模式】。";
+        } 
+
+        else if (userMessage.includes("你好") || userMessage.includes("哈嘍")) {
+            document.body.className = "";
+            aiResponse.innerText="AI助理: 您好呀~今天過得還好嗎?";
         } 
 
         else if (userMessage.includes("功能") || userMessage.includes("做什麼")) {
